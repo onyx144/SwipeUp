@@ -1207,6 +1207,64 @@ class User
     return $get_followers_count->fetch_assoc()['count'];
   }
 
+  /**
+   * get_posts_and_photos
+   * 
+   * @param integer $user_id
+   * @return integer
+   */
+  public function get_posts_and_photos($user_id = null) {
+    global $db;
+
+    // Устанавливаем user_id, если он не передан
+    $user_id = (isset($user_id)) ? $user_id : $this->_data['user_id'];
+
+    // Массив для хранения совпадающих данных
+    $result_data = [];
+
+    // Запрос для поиска постов, где user_id совпадает с post_id
+    $get_posts = $db->query(sprintf("SELECT post_id FROM posts WHERE user_id = %s AND post_id IS NOT NULL", secure($user_id, 'int')));
+
+    // Проверяем, есть ли посты
+    if ($get_posts->num_rows > 0) {
+        // Массив для сохранения совпадающих post_id
+        $post_ids = [];
+
+        // Сохраняем все совпадающие post_id
+        while ($post_row = $get_posts->fetch_assoc()) {
+            $post_ids[] = $post_row['post_id'];
+        }
+
+        // Преобразуем массив post_ids в строку для SQL-запроса
+        $post_ids_string = implode(',', array_map('intval', $post_ids));
+
+        // Запрос для поиска совпадений по post_id в таблице posts_photos
+        $get_photos = $db->query(sprintf("SELECT post_id, source FROM posts_photos WHERE post_id IN (%s)", $post_ids_string));
+
+        // Проверяем, есть ли фото для постов
+        if ($get_photos->num_rows > 0) {
+            // Сохраняем все найденные post_id и source
+            while ($photo_row = $get_photos->fetch_assoc()) {
+                $post_id = $photo_row['post_id'];
+                
+                // Если для данного post_id еще не создан массив, создаем его
+                if (!isset($result_data[$post_id])) {
+                    $result_data[$post_id] = [
+                        'post_id' => $post_id,
+                        'sources' => []  // Массив для хранения всех source для данного post_id
+                    ];
+                }
+
+                // Добавляем source в массив
+                $result_data[$post_id]['sources'][] = $photo_row['source'];
+            }
+        }
+    }
+
+    // Возвращаем собранные данные
+    return $result_data;
+}
+
 
   /**
    * get_subscribers
@@ -6798,6 +6856,7 @@ class User
       }
       $post['photos_num'] = count($post['photos']);
     }
+    /*Вернуться*/ 
     /* insert the post [album] */
     if ($post['post_type'] == 'album') {
       /* create new album */

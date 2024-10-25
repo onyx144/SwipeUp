@@ -27,7 +27,6 @@
               {if $user->_data['can_add_stories'] || ($system['stories_enabled'] && !empty($stories['array']))}
                 <div class="card">
                   <div class="card-header bg-transparent border-bottom-0">
-                    <strong class="text-muted">{__("Stories")}</strong>
                     {if $has_story}
                       <div class="float-end">
                         <button data-bs-toggle="tooltip" title='{__("Delete Your Story")}' class="btn btn-sm btn-icon btn-rounded btn-danger js_story-deleter">

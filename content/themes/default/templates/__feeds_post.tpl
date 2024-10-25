@@ -38,7 +38,8 @@
     <!-- memory post -->
 
     <!-- post body -->
-    <div class="post-body">
+    {if $post['post_type'] != "reel"}
+    <div class="post-body teess">
 
       <!-- post top alert -->
       {if $_get == "posts_profile" && $user->_data['user_id'] == $post['author_id'] && ($post['is_hidden'] || $post['is_anonymous'])}
@@ -48,9 +49,9 @@
 
       {include file='__feeds_post.body.tpl' _post=$post _shared=false}
 
-      {if !$post['needs_payment'] && !$post['needs_subscription'] && !$post['needs_pro_package'] && !$post['needs_age_verification']}
+      {if !$post['needs_subscription'] && !$post['needs_pro_package'] && !$post['needs_age_verification']}
         <!-- post stats -->
-        <div class="post-stats clearfix">
+        <div class="post-stats tempss clearfix">
           <!-- reactions stats -->
           {if $post['reactions_total_count'] > 0}
             <div class="float-start mr10" data-toggle="modal" data-url="posts/who_reacts.php?post_id={$post['post_id']}">
@@ -216,6 +217,7 @@
       {/if}
 
     </div>
+    {/if}
     <!-- post body -->
 
     <!-- post footer -->

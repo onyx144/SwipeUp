@@ -9401,7 +9401,7 @@ body.night-mode .about-bio {
   padding-bottom: 0;
 }
 
-.pg_photo {
+. {
   position: relative;
   display: block;
   background-size: cover;
@@ -9417,18 +9417,18 @@ body.night-mode .about-bio {
   margin-bottom: 2px;
 }
 
-.pg_photo.large {
+..large {
   min-width: 100px;
   min-height: 100px;
 }
 
-.pg_photo-delete-btn {
+.-delete-btn {
   position: absolute;
   left: 5px;
   top: 5px;
 }
 
-.pg_photo-pin-btn {
+.-pin-btn {
   position: absolute;
   right: 5px;
   top: 5px;
@@ -9438,7 +9438,7 @@ body.night-mode .about-bio {
   color: #eee;
 }
 
-.pg_photo-pin-btn.pinned {
+.-pin-btn.pinned {
   color: #ffeb3b;
 }
 

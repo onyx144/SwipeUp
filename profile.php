@@ -88,6 +88,7 @@ try {
 
   /* get profile posts count */
   $profile['posts_count'] = $user->get_posts_count($profile['user_id'], 'user');
+  $profile['posts_and_photos'] = $user->get_posts_and_photos($profile['user_id']);
   /* get profile photos count */
   $profile['photos_count'] = $user->get_photos_count($profile['user_id'], 'user');
   /* get profile videos count */

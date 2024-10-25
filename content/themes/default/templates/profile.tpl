@@ -3,6 +3,7 @@
 
 <!-- page content -->
 <div class="{if $system['fluid_design']}container-fluid{else}container{/if} sg-offcanvas">
+
   <div class="row">
 
     <!-- side panel -->
@@ -898,9 +899,7 @@
                 </div>
                 <div class="card-body">
                   <div class="row">
-                    {foreach $profile['photos'] as $photo}
-                      {include file='__feeds_photo.tpl' _context="photos" _small=true}
-                    {/foreach}
+                      {include file='__feeds_photo.tpl' _context="photos" _small=true post=$post}
                   </div>
                 </div>
               </div>
@@ -1449,11 +1448,14 @@
                 </div>
                 <div class="card-body">
                   {if $profile['photos']}
-                    <ul class="row">
-                      {foreach $profile['photos'] as $photo}
-                        {include file='__feeds_photo.tpl' _context="photos" _can_pin=true}
-                      {/foreach}
-                    </ul>
+                    <div class="row">
+                   {assign var="reversed_posts" value=$profile['posts_and_photos']}
+                  {foreach $reversed_posts|@array_reverse as $post_id => $post}
+
+                        {include file='__feeds_photo.tpl' _context="photos" _can_pin=true post=$post}
+                     {/foreach}
+
+                    </div>
                     <!-- see-more -->
                     <div class="alert alert-post see-more mt20 js_see-more" data-get="photos" data-id="{$profile['user_id']}" data-type='user'>
                       <span>{__("See More")}</span>

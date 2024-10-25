@@ -75,7 +75,10 @@
 
       <!-- main-header -->
       {if $page != "index" || ($user->_logged_in || $system['newsfeed_public'])}
-        <div class="main-header{if $page == 'reels'}x-hidden{/if}" {if $system['fluid_design']}style="padding-right: 0;" {/if}>
+         <script>
+          console.log("Page data: , {$page|escape:'javascript'}");
+         </script>
+        <div class="main-header{if $page != 'admin' && $page != 'profile' } x-hidden{/if}" {if $system['fluid_design']}style="padding-right: 0;" {/if}>
           <div class="{if $system['fluid_design']}container-fluid{else}container{/if}">
             <div class="row">
 

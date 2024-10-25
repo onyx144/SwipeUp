@@ -15,7 +15,7 @@ define('DB_NAME', 'spinchat');
 define('DB_USER', 'root');
 
 /** MySQL database password */
-define('DB_PASSWORD', '135790vcxZ!');
+define('DB_PASSWORD', '');
 
 /** MySQL hostname */
 define('DB_HOST', 'localhost');
@@ -25,7 +25,7 @@ define('DB_PORT', '3306');
 
 
 // ** System URL ** //
-define('SYS_URL', 'https://spinchat.space'); // e.g (http://example.com)
+define('SYS_URL', 'https://localhost'); // e.g (http://example.com)
 
 
 // ** i18n settings ** //

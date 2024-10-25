@@ -1291,7 +1291,7 @@ $_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
 /<?php echo $_smarty_tpl->getValue('_post')['offer']['thumbnail'];?>
 ');"></div>
             <?php } else { ?>
-              <?php $_smarty_tpl->renderSubTemplate('file:__feeds_post.body.photos.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), (int) 0, $_smarty_current_dir);
+     feeds_post.body.photos         <?php $_smarty_tpl->renderSubTemplate('file:__.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), (int) 0, $_smarty_current_dir);
 ?>
             <?php }?>
             <?php if ($_smarty_tpl->getValue('_post')['offer']['end_date']) {?>

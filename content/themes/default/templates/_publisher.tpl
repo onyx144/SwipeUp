@@ -293,39 +293,10 @@
                     {__("Upload Photos")}
                   </div>
                 </li>
-                {if !$_quick_mode}
-                  <li class="col-md-6">
-                    <div class="publisher-tools-tab js_publisher-tab" data-tab="album">
-                      {include file='__svg_icons.tpl' icon="photos" class="main-icon mr5" width="24px" height="24px"}
-                      {__("Create Album")}
-                    </div>
-                  </li>
-                {/if}
               {/if}
-              {if $user->_data['can_add_activity_posts']}
-                <li class="col-md-6">
-                  <div class="publisher-tools-tab js_publisher-feelings">
-                    {include file='__svg_icons.tpl' icon="smile" class="main-icon mr5" width="24px" height="24px"}
-                    {__("Feelings/Activity")}
-                  </div>
-                </li>
-              {/if}
-              {if $user->_data['can_add_geolocation_posts']}
-                <li class="col-md-6">
-                  <div class="publisher-tools-tab js_publisher-tab" data-tab="location">
-                    {include file='__svg_icons.tpl' icon="map" class="main-icon mr5" width="24px" height="24px"}
-                    {__("Check In")}
-                  </div>
-                </li>
-              {/if}
-              {if $user->_data['can_add_colored_posts']}
-                <li class="col-md-6">
-                  <div class="publisher-tools-tab js_publisher-tab" data-tab="colored">
-                    {include file='__svg_icons.tpl' icon="posts_colored" class="main-icon mr5" width="24px" height="24px"}
-                    {__("Colored Posts")}
-                  </div>
-                </li>
-              {/if}
+             
+
+              
               {if !$_quick_mode}
                 {if $system['voice_notes_posts_enabled']}
                   <li class="col-md-6">
